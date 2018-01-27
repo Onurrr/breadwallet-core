@@ -46,13 +46,11 @@ typedef struct {
 } BRChainParams;
 
 static const char *BRMainNetDNSSeeds[] = {
-    "seed.breadwallet.com.", "seed.bitcoin.sipa.be.", "dnsseed.bluematt.me.", "dnsseed.bitcoin.dashjr.org.",
-    "seed.bitcoinstats.com.", "bitseed.xf2.org.", "seed.bitcoin.jonasschnelli.ch.", NULL
+    "seed.viacoin.net.", "viaseeder.barbatos.fr.", "seed.zzy.su.", "mainnet.viacoin.net.", NULL
 };
 
 static const char *BRTestNetDNSSeeds[] = {
-    "testnet-seed.breadwallet.com.", "testnet-seed.bitcoin.petertodd.org.", "testnet-seed.bluematt.me.",
-    "testnet-seed.bitcoin.schildbach.de.", NULL
+    "159.203.109.115.", "104.131.34.150.", NULL
 };
 
 // blockchain checkpoints - these are also used as starting points for partial chain downloads, so they must be at
@@ -116,7 +114,7 @@ static int BRTestNetVerifyDifficulty(const BRMerkleBlock *block, const BRMerkleB
 static const BRChainParams BRMainNetParams = {
     BRMainNetDNSSeeds,
     8333,       // standardPort
-    0xd9b4bef9, // magicNumber
+    0xcbc6680f, // magicNumber
     0,          // services
     BRMerkleBlockVerifyDifficulty,
     BRMainNetCheckpoints,
@@ -125,8 +123,8 @@ static const BRChainParams BRMainNetParams = {
 
 static const BRChainParams BRTestNetParams = {
     BRTestNetDNSSeeds,
-    18333,      // standardPort
-    0x0709110b, // magicNumber
+    5223,      // standardPort
+    0x92efc5a9, // magicNumber
     0,          // services
     BRTestNetVerifyDifficulty,
     BRTestNetCheckpoints,

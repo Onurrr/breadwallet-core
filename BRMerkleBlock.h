@@ -39,6 +39,7 @@ extern "C" {
 
 typedef struct {
     UInt256 blockHash;
+    UInt256 powHash;
     uint32_t version;
     UInt256 prevBlock;
     UInt256 merkleRoot;
@@ -102,6 +103,17 @@ inline static int BRMerkleBlockEq(const void *block, const void *otherBlock)
 
 // frees memory allocated for block
 void BRMerkleBlockFree(BRMerkleBlock *block);
+
+#if defined(TARGET_OS_MAC)
+#include <Foundation/Foundation.h>
+#define vienna_log(...) NSLog(__VA_ARGS__)
+#elif defined(__ANDROID__)
+#include <android/log.h>
+#define vienna_log(...) __android_log_print(ANDROID_LOG_ERROR, "vienna", __VA_ARGS__)
+#else
+#include <stdio.h>
+#define vienna_log(...) printf(__VA_ARGS__)
+#endif
 
 #ifdef __cplusplus
 }
